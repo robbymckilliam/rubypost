@@ -1,0 +1,14 @@
+#RubyPost 0.0.1 README
+
+Run
+
+rake
+
+to build the gem, then install the gem into your ruby installation.  
+This is a very early version, it's likely to undergo some significant
+modifications.  Currently working is the graphing part
+
+
+
+
+
