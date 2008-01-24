@@ -31,9 +31,40 @@ class Macros < Object
   
 end
 
-#global module variable to be altered by drawables that
+#stores the macros that particular drawbles need.
+#This should really be a private class.
+class PicturePrecompiler < Object
+  
+  def initialize
+    @pictures = Array.new
+  end
+  
+  def add_picture(s)
+    @pictures.push(s)
+  end
+  
+  def compile
+    str = "picture " + @@org_picture + ";\n" + @@org_picture + " := currentpicture;\n"
+    @pictures.each do
+      |p| str = str + p.precompile + "\n"
+    end
+    str
+  end
+  
+end
+
+#module variable to be altered by drawables that
 #need a particular metapost macro input.  
-$Inputs = Macros.new
+@@picture_precompiler = PicturePrecompiler.new
+
+#module variable to be altered by drawables that
+#need a particular metapost macro input.  
+@@Inputs = Macros.new
+
+#this is the origninal metapost picture that is
+#what actually gets displayed.  You shouldn't use
+#this name for any other picture!
+@@org_picture = "ORIGINAL_PICTURE"
 
 #metapost file
 #A metapost file can contain many figures.
@@ -58,7 +89,9 @@ class File < Object
   
   #returns the mp file as a str
   def compile_to_string
-    str = @@start_of_file + $Inputs.compile
+    str = @@start_of_file + @@Inputs.compile
+    #save the original metapost picture
+    str = str + @@picture_precompiler.compile
     @figures.each_index do
       |i| str = str + 'beginfig(' + (i+1).to_s + ");\n" + @figures[i].compile + "\n"
     end
@@ -127,6 +160,7 @@ class Figure < Object
   
 end
 
+#end module RubyPost
 end
 
 #Add the compile functionality to Ruby Numeric.  Calling

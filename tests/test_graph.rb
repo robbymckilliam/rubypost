@@ -1,8 +1,5 @@
 #code to generate a plot of the data in metapost format
 require 'rubypost'
-require 'drawable'
-require 'options'
-require 'graph'
 
 include RubyPost
 

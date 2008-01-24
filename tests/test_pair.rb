@@ -1,13 +1,8 @@
 require 'test/unit'
 
-#require 'rubygems'
-#gem 'rubypost'
-#require 'rubypost'
+#code to generate a plot of the data in metapost format
+require 'rubypost'
 
-#load the rest of rubypost
-require '../lib/objects'
-require '../lib/drawable'
-require '../lib/options'
 
 include RubyPost
 

@@ -11,8 +11,8 @@ class Graph < Drawable
   def initialize
       super
       @dati  = Array.new
-      $Inputs.add_input('graph')
-      $Inputs.add_input('sarith')
+      @@Inputs.add_input('graph')
+      @@Inputs.add_input('sarith')
       self.set_size(10,10)
   end
   
@@ -86,15 +86,29 @@ class BaseGraphData < Drawable
   
 end
 
+#Implements the graph data filename macro
+class GraphFile < BaseGraphData
   
-
-#set the x and y coordinates arrays independently
+  attr_writer :filename
+  
+   def initialize(filename=nil)
+     super
+     @filename = filename
+   end
+   
+   def compile
+    "\"" + @filename + "\" " + compile_options + ";"
+   end
+   
+ end
+ 
+ #set the x and y coordinates arrays independently
 #This uses temp files in order to store and create
 #the graph.  Graphs created with this type of data
 #need to be compiled directly to postscript using
 #RubyPost::File#compile_to_ps unless you want to
 #copy all of the temporay files too!
-class GraphData < BaseGraphData
+class GraphData < GraphFile
   
   attr_writer :x, :y
   
@@ -126,22 +140,6 @@ class GraphData < BaseGraphData
   
 end
 
-#Implements the graph data filename macro
-class GraphFile < BaseGraphData
-  
-  attr_writer :filename
-  
-   def initialize(filename=nil)
-     super()
-     @filename = filename
-   end
-   
-   def compile
-    "\"" + @filename + "\" " + compile_options + ";"
-   end
-   
-end
-
 
 #class for the special options related to graph paths
 class GraphDataOption < PathOption
@@ -158,7 +156,7 @@ class Plot < GraphDataOption
   end
   
   def compile
-    'plot ' + @dot_type
+    'plot ' + @dot_type.compile
   end
   
 end

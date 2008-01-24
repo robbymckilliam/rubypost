@@ -1,11 +1,5 @@
-#require 'rubygems'
-#gem 'rubypost'
-#require 'rubypost'
 
-#load the rest of rubypost
-require '../lib/objects'
-require '../lib/drawable'
-require '../lib/options'
+require 'rubypost'
 
 include RubyPost
 

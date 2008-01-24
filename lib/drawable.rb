@@ -86,6 +86,44 @@ class Drawable < Object
   
 end
 
+#wrapper for the metapost picture
+#pictures are collection of drawables
+class Picture < Drawable
+  
+  attr_writer :name
+  
+  #store a unique picture name unless incase it was not specified.
+  @@default_name = 0
+  
+  #intialise a picture with it's name, use a string!
+  def initialize(name="picture_number" + @@default_name.to_s)
+    super()
+    @name = name
+    @drawables = Array.new
+    @@default_name = @@default_name + 1
+    @@picture_precompiler.add_picture(self)
+  end
+  
+  def add_drawable(d)
+    @drawables.push(d)
+  end
+  
+  #creates the definition of the picture that goes
+  #at the start of the file
+  def precompile
+    str = "picture " + @name + ";\n"
+    @drawables.each do |d| 
+      str = str + d.draw_type + ' ' + d.compile +  "\n"
+    end
+    str = str + @name + " := currentpicture; currentpicture := " + @@org_picture + ";\n"
+  end
+  
+  def compile
+    @name.compile + compile_options + ";\n"
+  end
+  
+end
+
 #A custom drawable.  Send it a metapost string
 class CustomDrawable < Drawable
   
