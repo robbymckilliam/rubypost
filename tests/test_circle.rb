@@ -1,5 +1,10 @@
 #code to generate a plot of the data in metapost format
-require 'rubypost'
+#require 'rubypost'
+
+require '../lib/objects'
+require '../lib/drawable'
+require '../lib/draw'
+require '../lib/options'
 
 include RubyPost
 
@@ -10,8 +15,8 @@ file = RubyPost::File.new('testcircle')
 #draw a circle
 fig1 = Figure.new
 file.add_figure(fig1)
-circle1 = RubyPost::Circle.new.scale(1.cm)
-fig1.add_drawable(circle1)
+circle1 = RubyPost::Circle.new
+fig1.add_drawable(Draw.new(circle1).scale(1.cm))
 
 puts file.compile_to_string
 file.compile

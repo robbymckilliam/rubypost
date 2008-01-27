@@ -1,7 +1,10 @@
 require 'test/unit'
 
-#code to generate a plot of the data in metapost format
-require 'rubypost'
+#require 'rubypost'
+
+require '../lib/objects'
+require '../lib/drawable'
+
 
 
 include RubyPost
