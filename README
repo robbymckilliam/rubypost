@@ -1,12 +1,12 @@
-#RubyPost 0.0.1 README
+#RubyPost 0.0.2 README
 
 Run
 
 rake
 
 to build the gem, then install the gem into your ruby installation.  
-This is a very early version, it's likely to undergo some significant
-modifications.  Currently working is the graphing part
+
+This version of rubypost implements most of the basic metapost features.  See the test files for usage examples. 
 
 
 
