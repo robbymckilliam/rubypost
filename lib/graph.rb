@@ -90,6 +90,11 @@ module RubyPost
     def add_coords(coords)
       add_pre_command(coords)
     end
+    
+    #add a label to this graph data
+    def add_label(coords)
+      add_post_command(coords)
+    end
   
     def compile_post_commands
       str = String.new
@@ -251,48 +256,55 @@ module RubyPost
   end
 
   #base class for graph labels
-  class GraphLabel < GraphOption
-  
-    attr_writer :label
-  
-    def initialize(label=nil)
-      @label = label
+  class GraphLabel < BaseLabel
+    
+    def initialize(t=nil,p=0)
+      super(t,p)
+      self
     end
-  
+    
+    def compile
+      'glabel.' + @place + '(' + @text.compile + ', ' + @position.compile + ') ' + compile_options + ";\n"
+    end
+    
   end
 
   #place an x label on the graph
+  #overrides and position and place settings
   class XLabel < GraphLabel
   
     def compile
-      'glabel.bot(' + @label + ", OUT);\n"
+      'glabel.bot(' + @text + ", OUT)" + compile_options + ";\n"
     end
 
   end
 
   #place an y label on the graph
+  #overrides and position and place settings
   class YLabel < GraphLabel
   
     def compile
-      'glabel.lft(' + @label + ", OUT);\n"
+      'glabel.lft(' + @text + ", OUT)" + compile_options + ";\n"
     end
 
   end
 
   #place an y label on the right hand side of the graph
+  #overrides and position and place settings
   class YLabelRight < GraphLabel
   
     def compile
-      'glabel.rt(' + @label + ", OUT);\n"
+      'glabel.rt(' + @text + ", OUT)" + compile_options + ";\n"
     end
 
   end
 
   #place a title on the top of the graph
+  #overrides and position and place settings
   class GraphTitle < GraphLabel
   
     def compile
-      'glabel.top(' + @label + ", OUT);\n"
+      'glabel.top(' + @text + ", OUT)" + compile_options + ";\n"
     end
   
   end

@@ -1,4 +1,4 @@
-#RubyPost 0.0.2 README
+#RubyPost 0.0.3 README
 
 Run
 
@@ -10,7 +10,6 @@ This version of rubypost implements most of the basic metapost features.  See th
 
 Todo: This is an incomplete list, but it's some stuff that should be added.
 - add curl, tension and dir options to paths
-- add a label drawable.  The graphs labels should extends this with glabel
 - add clipping for pictures
 
 

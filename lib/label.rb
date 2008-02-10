@@ -80,6 +80,9 @@ module RubyPost
       @place = "bot"
       self
     end
+    def bot
+      bottom
+    end
     
     #place the text above the position.  Wraps the metapost
     #bot command for labels
@@ -94,12 +97,58 @@ module RubyPost
       @place = "rt"
       self
     end
+    def rt
+      right
+    end
     
     #place the text to the left the position.  Wraps the metapost
     #bot command for labels
     def left
       @place = "lft"
       self
+    end
+    def lft
+      left
+    end
+    
+    #place the text to the upper left of the position.  Wraps the metapost
+    #bot command for labels
+    def top_left
+      @place = "ulft"
+      self
+    end
+    def ulft
+      top_left
+    end
+    
+    #place the text to the bottom left the position.  Wraps the metapost
+    #bot command for labels
+    def bottom_left
+      @place = "llft"
+      self
+    end
+    def llft
+      bottom_left
+    end
+    
+    #place the text to the upper right the position.  Wraps the metapost
+    #bot command for labels
+    def top_right
+      @place = "urt"
+      self
+    end
+    def urt
+      top_right
+    end
+    
+    #place the text to the bottom right the position.  Wraps the metapost
+    #bot command for labels
+    def bottom_right
+      @place = "lrt"
+      self
+    end
+    def lrt
+      bottom_right
     end
     
   end

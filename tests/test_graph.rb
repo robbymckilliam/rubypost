@@ -5,6 +5,7 @@ require '../lib/objects'
 require '../lib/drawable'
 require '../lib/draw'
 require '../lib/options'
+require '../lib/label'
 require '../lib/graph'
 
 include RubyPost
@@ -28,6 +29,9 @@ gd = GraphData.new(x, y)
 gd.add_option(RubyPost::Colour.new(0.0,1.0,0.0))
 graph.add_data(gd)
 
+gd.add_label(GraphLabel.new(latex("data label"), 5).right)
+
+puts file.compile_to_string
 file.compile('testgraph')
 
 file.view
