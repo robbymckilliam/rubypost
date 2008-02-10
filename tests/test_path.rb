@@ -36,7 +36,6 @@ fig3.add_drawable(DoubleArrow.new(path))
 #this is achieved by reversing the path
 fig4 = Figure.new
 file.add_figure(fig4)
-#see the ruby reference for clone symatics
 revpath = path.clone
 revpath.reverse
 fig4.add_drawable(Arrow.new(revpath))
@@ -59,7 +58,7 @@ draw_command.add_option(Colour.new(1.0,0.0,0.0))
 draw_command.set_drawable(path)
 fig6.add_drawable(draw_command)
 
-#draw the previous arrow again again and draw 
+#draw the previous arrow again and draw 
 #another arrow but translate right by 5cm. <br>
 #Note the order of translation and rotation is important.
 #Also make the colour blue and use a square pen that is
