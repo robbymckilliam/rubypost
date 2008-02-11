@@ -1,6 +1,6 @@
 module RubyPost
   
-  
+  #Base class for labels in rubypost
   class BaseLabel < Object
     
     attr_writer :text, :position
@@ -9,7 +9,7 @@ module RubyPost
     #At the moment you must use etex/btex for the
     #string to display correct.  This can be achieve
     #using latex("string").
-    def initialize(t=nil, p=nill)
+    def initialize(t=nil, p=nil)
       @options = Array.new
       @text = t
       @position = p
@@ -60,14 +60,14 @@ module RubyPost
       self
     end
   
-    #macro for translating the draw command.  This is the
+    #macro for translating the label.  This is the
     #same as using add_option(Translate.new(x,y))
     def translate(x,y)
       add_option(Translate.new(Pair.new(x,y)))
       self
     end
   
-    #macro for rotating the draw command.  This is the
+    #macro for rotating the label.  This is the
     #same as using add_option(Rotate.new(a))
     def rotate(a)
       add_option(Rotate.new(a))
