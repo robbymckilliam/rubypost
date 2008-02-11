@@ -120,6 +120,7 @@ module RubyPost
   
     def add_pair(p)
       @p.push(p)
+      self
     end
   
     #returns a pair that is the centroid of the pairs

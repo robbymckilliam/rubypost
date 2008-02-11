@@ -107,6 +107,44 @@ module RubyPost
   #alias DoubleArrow, implements the metapost drawdblarrow command
   class DblArrow < DoubleArrow
   end
+  
+  
+  #This wraps the metapost clipping command.  This needs
+  #to be used with a little care.  It will clip everything that
+  #has been previously added to the picture when you add it.
+  #Anything that gets drawn after clipping, wont be clipped.
+  #This is in keeping with the way that metapost works,
+  #however most other objects in rubypost the order inwhich
+  #they are added has no effect (other than overlay).
+  # <\br>
+  #Clip only kind of fits as a draw command.  It's doesn't need colours
+  #and stuff.  This is the best place to put it at the moment, but it
+  #probably should inheret something else.
+  class Clip < BaseDrawCommand
+	
+	attr_writer :path, :picture
+  
+	def initialize(path=nil, pic='currentpicture')
+		super()
+		@picture = pic
+		@path = path
+	end
+	
+	#set the clipping path
+	def set_path(p)
+		@path = p
+	end
+	
+	#set the picture to clip.  Defaults to 'currentpicture' see a metapost guide
+	def set_picture(p='currentpicture')
+		@picture = p
+	end
+	
+	def compile
+		"clip " + @picture.compile + " to " + @path.compile + ' ' + compile_options + ";\n"
+	end
+	
+  end
 
 
 end

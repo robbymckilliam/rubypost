@@ -10,7 +10,6 @@ This version of rubypost implements most of the basic metapost features.  See th
 
 Todo: This is an incomplete list, but it's some stuff that should be added.
 - add curl, tension and dir options to paths
-- add clipping for pictures
 
 
 
