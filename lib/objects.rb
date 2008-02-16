@@ -74,7 +74,9 @@ module RubyPost
   
     attr_writer :fname
   
-    @@start_of_file = "prologues := 2;\n"
+    @@start_of_file = <<END_OF_STRING
+prologues := 2;
+END_OF_STRING
   
     #input 'sarith' so that metapost can read exponential notation
     def initialize(fname = nil)
@@ -182,6 +184,7 @@ class Numeric
   #A nifty thing here is that if you dont specify the size
   #if wont print anything
   def compile
+    #@mpsize='cm' if(@mpsize==nil)
     to_s + @mpsize.to_s
   end
 end

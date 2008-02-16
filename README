@@ -1,15 +1,16 @@
-#RubyPost 0.0.3 README
+#RubyPost 0.0.4 README
 
-Run
+You can download the latest version of rubypost from rubyforge. Type:
 
-rake
+gem install rubypost
 
-to build the gem, then install the gem into your ruby installation.  
+Or download the source and run rake to build the gem, then install the gem into your ruby installation.
 
 This version of rubypost implements most of the basic metapost features.  See the test files for usage examples. 
 
 Todo: This is an incomplete list, but it's some stuff that should be added.
 - add curl, tension and dir options to paths
+- ability to add latex packages at start of metapost file.
 
 
 
