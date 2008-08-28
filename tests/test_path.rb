@@ -4,6 +4,7 @@ require '../lib/objects'
 require '../lib/drawable'
 require '../lib/draw'
 require '../lib/options'
+require '../lib/label'
 require '../lib/graph'
 
 include RubyPost
