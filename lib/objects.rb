@@ -31,8 +31,7 @@ module RubyPost
   
   end
 
-  #stores the macros that particular drawbles need.
-  #This should really be a private class.
+  #Defines all the pictures at the front of the file
   class PicturePrecompiler < Object
   
     def initialize
