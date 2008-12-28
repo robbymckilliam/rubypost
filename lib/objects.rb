@@ -71,7 +71,11 @@ module RubyPost
   #compile_to_str has a dodgy backspace handler.
   class File < Object
   
-    attr_writer :fname
+    attr_writer :fname, 
+      #name of div viewer program to use
+      :dvi_viewer,
+       #option for metapost command line
+      :metapost_options
   
     @@start_of_file = <<END_OF_STRING
 prologues := 2;
@@ -81,6 +85,8 @@ END_OF_STRING
     def initialize(fname = nil)
       @figures = Array.new
       @fname = fname
+      @dvi_viewer = 'yap'
+      @metapost_options = '-interaction=nonstopmode'
     end
   
     #add a new figure to this mpost file
@@ -116,9 +122,9 @@ END_OF_STRING
     #and copmiles the metapost commands if mpost is in the path
     def compile(fname=@fname)
       compile_to_file(fname)
-      system('mpost -quiet ' + fname + '.mp')
+      system('mpost ' + @metapost_options + ' ' + fname + '.mp')
     end
-  
+
     #default view command is view_dvi
     def view
       view_dvi
@@ -133,7 +139,7 @@ END_OF_STRING
       str = 'tex mproof'
       @figures.each_index { |i| str = str + ' ' + @fname + '.' + (i+1).to_s }
       system(str)
-      system('yap mproof.dvi')
+      system(@dvi_viewer + ' mproof.dvi')
     end
   
   end

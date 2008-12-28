@@ -34,4 +34,5 @@ gd.add_label(GraphLabel.new(latex("data label"), 5).right)
 puts file.compile_to_string
 file.compile('testgraph')
 
+file.dvi_viewer = 'evince'
 file.view
