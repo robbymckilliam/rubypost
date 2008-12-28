@@ -9,7 +9,7 @@ task :default => [:rdoc, :package]
 #generate the gem package
 spec = Gem::Specification.new do |s|
   s.name = "rubypost"
-  s.version = "0.0.4"
+  s.version = "0.0.5"
   s.author = "Robby McKilliam"
   s.email = "harprobey@gmail.com"
   s.homepage = "http://rubyforge.org/projects/rubypost/"
@@ -18,6 +18,7 @@ spec = Gem::Specification.new do |s|
   s.files = FileList["{tests,lib,doc}/*"].exclude("rdoc").to_a
   s.require_path = "lib"
   s.autorequire = "lib/rubypost"
+  s.rubyforge_project = "rubypost"
   s.test_file = "tests/test_path.rb"
   s.has_rdoc = true
   s.extra_rdoc_files = ["README"]
