@@ -1,5 +1,5 @@
 require 'rubygems'
-Gem::manage_gems
+#Gem::manage_gems
 
 require 'rake/gempackagetask'
 require 'rake/rdoctask'
@@ -9,10 +9,10 @@ task :default => [:rdoc, :package]
 #generate the gem package
 spec = Gem::Specification.new do |s|
   s.name = "rubypost"
-  s.version = "0.0.5"
+  s.version = "0.0.8"
   s.author = "Robby McKilliam"
-  s.email = "harprobey@gmail.com"
-  s.homepage = "http://rubyforge.org/projects/rubypost/"
+  s.email = "robby.mckilliam@gmail.com"
+  s.homepage = "https://github.com/robbymckilliam/rubypost"
   s.platform = Gem::Platform::RUBY
   s.summary = "Ruby wrapper for the MetaPost drawing language"
   s.files = FileList["{tests,lib,doc}/*"].exclude("rdoc").to_a
