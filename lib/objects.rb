@@ -77,8 +77,14 @@ module RubyPost
        #option for metapost command line
       :metapost_options
   
-    @@start_of_file = <<END_OF_STRING
+@@start_of_file = <<END_OF_STRING
 prologues := 2;
+filenametemplate "%j-%c.mps";
+verbatimtex
+%&latex
+\\documentclass{minimal}
+\\begin{document}
+etex
 END_OF_STRING
   
     #input 'sarith' so that metapost can read exponential notation
