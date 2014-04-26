@@ -9,7 +9,7 @@ task :default => [:rdoc, :package]
 #generate the gem package
 spec = Gem::Specification.new do |s|
   s.name = "rubypost"
-  s.version = "0.0.8"
+  s.version = "0.0.9"
   s.author = "Robby McKilliam"
   s.email = "robby.mckilliam@gmail.com"
   s.homepage = "https://github.com/robbymckilliam/rubypost"
