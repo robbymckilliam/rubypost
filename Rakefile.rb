@@ -1,15 +1,15 @@
 require 'rubygems'
 #Gem::manage_gems
 
-require 'rake/gempackagetask'
-require 'rake/rdoctask'
+require 'rubygems/package_task'
+require 'rdoc/task'
 
 task :default => [:rdoc, :package]
 
 #generate the gem package
 spec = Gem::Specification.new do |s|
   s.name = "rubypost"
-  s.version = "0.0.9"
+  s.version = "0.1.0"
   s.author = "Robby McKilliam"
   s.email = "robby.mckilliam@gmail.com"
   s.homepage = "https://github.com/robbymckilliam/rubypost"
