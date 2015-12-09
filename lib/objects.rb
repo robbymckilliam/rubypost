@@ -77,7 +77,7 @@ module RubyPost
        #option for metapost command line
       :metapost_options
   
-@@start_of_file = <<END_OF_STRING
+@@start_of_file_string_default = <<END_OF_STRING
 prologues := 2;
 filenametemplate "%j-%c.mps";
 verbatimtex
@@ -88,13 +88,14 @@ etex
 END_OF_STRING
   
     #input 'sarith' so that metapost can read exponential notation
-    def initialize(fname = nil)
+    def initialize(fname = nil, start_of_file_string = @@start_of_file_string_default)
       @figures = Array.new
       @fname = fname
       @dvi_viewer = 'yap'
       @metapost_options = '-interaction=nonstopmode'
+      @start_of_file_string = start_of_file_string
     end
-  
+
     #add a new figure to this mpost file
     def add_figure(f)
       @figures.push(f)
@@ -102,7 +103,7 @@ END_OF_STRING
   
     #returns the mp file as a str
     def compile_to_string
-      str = @@start_of_file + @@Inputs.compile
+      str = @start_of_file_string + @@Inputs.compile
       #save the original metapost picture
       str = str + @@picture_precompiler.compile
       @figures.each_index do
@@ -143,7 +144,7 @@ END_OF_STRING
     #not work with underscores
     def view_dvi
       str = 'tex mproof'
-      @figures.each_index { |i| str = str + ' ' + @fname + '.' + (i+1).to_s }
+      @figures.each_index { |i| str = str + ' ' + @fname + '-' + (i+1).to_s + ".mps"  }
       system(str)
       system(@dvi_viewer + ' mproof.dvi')
     end
